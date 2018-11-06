@@ -1,3 +1,6 @@
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -43,6 +46,9 @@ import { AppointmentProvider } from '../providers/appointment/appointment';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
     //AngularFireModule.initializeApp(firebaseConfig),
 
