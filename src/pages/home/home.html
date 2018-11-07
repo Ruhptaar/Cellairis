@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar color = "primary">
+    <ion-title class = "center">
+    Cellairis
+  </ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,10 +10,23 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Cellairis</h3>
+  <ion-title>
+  {{ viewTitle }}
+</ion-title>
+  <button ion-button icon-only (click)="addEvent()">
+    <ion-icon name="add"></ion-icon>
+  </button>
 
-  <p>Welcome to the Cellairis app! To scheduele a repair appointment please begin by filling out the following information.
-  </p>
+  <calendar [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  (onEventSelected)="onEventSelected($event)"
+  (onTitleChanged)="onViewTitleChanged($event)"
+  (onTimeSelected)="onTimeSelected($event)"
+  step="30"
+  class="calendar">
+  </calendar>
+
 
 
 
