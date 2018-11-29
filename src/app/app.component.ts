@@ -23,7 +23,7 @@ export class MyApp {
 
 /* dont forget to change this to home when all said and done*/
   zone: NgZone;
-  rootPage: any;
+  rootPage: any = 'HomePage';
 
   pages: Array<{title: string, component: any}>;
 
