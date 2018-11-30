@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color = "primary">
     <ion-title class = "center">
-    Cellairis
+
   </ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -10,6 +10,20 @@
 </ion-header>
 
 <ion-content padding>
+
+  <img class = "center" src = "assets/imgs/cellairislogo.png" (click)="goToLogin()">
+
+<h2>* Attention Customers *</h2>
+<h2> To claim priority for a 30 minute repair interval, please select a date and enter the required information below</h2>
+<h2>* Please Note priority for a repair simply means that your repair will jump the line when you come in for your repair</h2>
+
+
+
+
+
+
+
+
   <ion-title>
   {{ viewTitle }}
 </ion-title>
@@ -26,8 +40,5 @@
   step="30"
   class="calendar">
   </calendar>
-
-
-
 
 </ion-content>

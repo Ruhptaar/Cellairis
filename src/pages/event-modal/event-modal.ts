@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import * as moment from 'moment';
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-event-modal',
@@ -11,7 +10,7 @@ import * as moment from 'moment';
 })
 export class EventModalPage {
 
-  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false };
+  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString()};
   minDate = new Date().toISOString();
 
   constructor(public navCtrl: NavController, private navParams: NavParams, public viewCtrl: ViewController) {
@@ -29,7 +28,3 @@ export class EventModalPage {
   }
 
 }
-  /*ionViewDidLoad() {
-    console.log('ionViewDidLoad EventModalPage');
-  }
-*/

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {
   Alert,
-  AlertController,
   IonicPage,
+  AlertController,
   NavController,
   NavParams
 } from "ionic-angular";

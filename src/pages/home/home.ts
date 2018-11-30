@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, ModalController, NavParams, AlertController } from 'ionic-angular';
 import * as moment from 'moment';
+import { LoginPage } from '../login/login';
+
 
 @Component({
   selector: 'page-home',
@@ -44,6 +46,10 @@ export class HomePage {
 
     onViewTitleChanged(title) {
       this.viewTitle = title;
+    }
+
+    goToLogin(): void {
+    this.navCtrl.push(LoginPage);
     }
 
     onEventSelected(event) {

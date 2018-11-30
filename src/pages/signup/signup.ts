@@ -13,7 +13,6 @@ import { AuthProvider } from "../../providers/auth/auth";
 import { EmailValidator } from "../../validators/email";
 import { HomePage } from "../home/home";
 
-
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -42,31 +41,29 @@ export class SignupPage {
       ]
     });
   }
-  signupUser(): void {
-    if (!this.signupForm.valid) {
-      console.log(
-        `Need to complete the form, current value: ${this.signupForm.value}`
-      );
+  signupUser(){
+    if (!this.signupForm.valid){
+      console.log(this.signupForm.value);
     } else {
-      const email: string = this.signupForm.value.email;
-      const password: string = this.signupForm.value.password;
-
-      this.authProvider.signupUser(email, password).then(
-        user => {
-          this.loading.dismiss().then(() => {
-            this.navCtrl.setRoot(HomePage);
+      this.authProvider.signupUser(this.signupForm.value.email, this.signupForm.value.password)
+      .then(() => {
+        this.loading.dismiss().then( () => {
+          this.navCtrl.setRoot(HomePage);
+        });
+      }, (error) => {
+        this.loading.dismiss().then( () => {
+          let alert = this.alertCtrl.create({
+            message: error.message,
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
           });
-        },
-        error => {
-          this.loading.dismiss().then(() => {
-            const alert: Alert = this.alertCtrl.create({
-              message: error.message,
-              buttons: [{ text: "Ok", role: "cancel" }]
-            });
-            alert.present();
-          });
-        }
-      );
+          alert.present();
+        });
+      });
       this.loading = this.loadingCtrl.create();
       this.loading.present();
     }

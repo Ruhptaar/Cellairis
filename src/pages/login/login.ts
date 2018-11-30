@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 @IonicPage()
 @Component({
@@ -39,14 +41,6 @@ public loading: Loading;
         Validators.compose([Validators.required, Validators.minLength(6)])
       ]
     });
-  }
-
-  goToSignup():void {
-    this.navCtrl.push('SignupPage');
-  }
-
-  goToResetPassword():void {
-    this.navCtrl.push('ResetPasswordPage');
   }
 
   loginUser(): void {
@@ -77,5 +71,14 @@ public loading: Loading;
       this.loading = this.loadingCtrl.create();
       this.loading.present();
     }
+  }
+
+  logoutUser(): Promise<void> {
+    const userId: string = firebase.auth().currentUser.uid;
+    firebase
+      .database()
+      .ref(`/userProfile/${userId}`)
+      .off();
+    return firebase.auth().signOut();
   }
 }
